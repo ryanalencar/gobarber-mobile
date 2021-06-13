@@ -1,21 +1,7 @@
 import React from 'react'
-import { Text, View } from 'react-native'
 
-const App = () => (
-  <View>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-    <Text>Testereee</Text>
-  </View>
-)
+import Routes from './routes'
 
-export default App
+export default function App() {
+  return <Routes />
+}
