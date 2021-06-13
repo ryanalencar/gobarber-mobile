@@ -1,11 +1,13 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+
+import Background from '../../components/Background'
 
 function SignUp() {
   return (
-    <View>
+    <Background>
       <Text> SignUp Works!!!</Text>
-    </View>
+    </Background>
   )
 }
 
