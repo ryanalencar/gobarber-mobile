@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Image, Text } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -15,6 +15,11 @@ import {
 import logo from '../../assets/logo.png'
 
 function SignUp({ navigation }) {
+  const emailRef = useRef()
+  const passRef = useRef()
+
+  const handleSubmit = () => {}
+
   return (
     <Background>
       <Container>
@@ -25,6 +30,8 @@ function SignUp({ navigation }) {
             autoCorrect={false}
             autoCapitalize='none'
             placeholder='Nome completo'
+            returnKeyType='next'
+            onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
             icon='mail-outline'
@@ -32,13 +39,19 @@ function SignUp({ navigation }) {
             autoCorrect={false}
             autoCapitalize='none'
             placeholder='Digite seu email'
+            ref={emailRef}
+            returnKeyType='next'
+            onSubmitEditing={() => passRef.current.focus()}
           />
           <FormInput
             icon='lock-outline'
             secureTextEntry
             placeholder='Digite sua senha secreta'
+            ref={passRef}
+            returnKeyType='send'
+            onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onPress={() => {}}>Criar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Criar</SubmitButton>
         </Form>
 
         <SignLink>
