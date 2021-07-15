@@ -18,10 +18,16 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'prettier/prettier': 'error',
-    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [
+      'off',
+      { extensions: ['.js', '.jsx', '.tsx', '.jsx'] },
+    ],
     'import/prefer-default-export': 'off',
     'jsx-quotes': ['error', 'prefer-single'],
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'no-unused-vars': 'warn',
   },
 }
