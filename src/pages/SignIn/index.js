@@ -1,5 +1,6 @@
 import React from 'react'
-import { Image, Text } from 'react-native'
+import { Image } from 'react-native'
+import PropTypes from 'prop-types'
 
 import Background from '../../components/Background'
 
@@ -8,11 +9,12 @@ import {
   FormInput,
   SubmitButton,
   Form,
+  SignLink,
   SignLinkText,
 } from './styles'
 import logo from '../../assets/logo.png'
 
-function SignIn() {
+function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
@@ -33,12 +35,21 @@ function SignIn() {
           <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
         </Form>
 
-        {/* <SignLink>
-          <SignLinkText />
-        </SignLink> */}
+        <SignLink>
+          <SignLinkText onPress={() => navigation.navigate('SignUp')}>
+            Criar conta gratuita
+          </SignLinkText>
+        </SignLink>
       </Container>
     </Background>
   )
+}
+
+SignIn.defaultProps = {
+  navigation: {},
+}
+SignIn.propTypes = {
+  navigation: PropTypes.func,
 }
 
 export default SignIn
