@@ -5,12 +5,12 @@ import Background from '../../components/Background'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 
+import { Container } from './styles'
+
 function SignIn() {
   return (
     <Background>
-      <Text> SignIn Works!!!</Text>
-      <Input icon='add-chart' placeholder='Digite seu telefone' />
-      <Button>Teste</Button>
+      <Container />
     </Background>
   )
 }
