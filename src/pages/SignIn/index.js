@@ -58,7 +58,7 @@ SignIn.defaultProps = {
   navigation: {},
 }
 SignIn.propTypes = {
-  navigation: PropTypes.func,
+  navigation: PropTypes.object,
 }
 
 export default SignIn

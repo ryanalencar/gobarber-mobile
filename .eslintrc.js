@@ -29,5 +29,7 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'no-unused-vars': 'warn',
+    'react/forbid-prop-types': 'off',
+    'no-undef': 'off',
   },
 }

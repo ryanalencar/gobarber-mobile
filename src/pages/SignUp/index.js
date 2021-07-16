@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Image, Text } from 'react-native'
+import { Image } from 'react-native'
 import PropTypes from 'prop-types'
 
 import Background from '../../components/Background'
@@ -68,7 +68,7 @@ SignUp.defaultProps = {
   navigation: {},
 }
 SignUp.propTypes = {
-  navigation: PropTypes.func,
+  navigation: PropTypes.object,
 }
 
 export default SignUp
