@@ -44,7 +44,7 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
-      provider: true,
+      provider: false,
     })
   } catch (error) {
     Alert.alert(

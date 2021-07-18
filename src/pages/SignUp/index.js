@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Image } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -13,12 +13,21 @@ import {
   SignLinkText,
 } from './styles'
 import logo from '../../assets/logo.png'
+import { useReducerAuth } from '../../store/hooks/auth'
 
 function SignUp({ navigation }) {
+  const [, { dispatchSignUp }] = useReducerAuth()
+
   const emailRef = useRef()
   const passRef = useRef()
 
-  const handleSubmit = () => {}
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = () => {
+    dispatchSignUp({ name, email, password })
+  }
 
   return (
     <Background>
@@ -31,6 +40,8 @@ function SignUp({ navigation }) {
             autoCapitalize='none'
             placeholder='Nome completo'
             returnKeyType='next'
+            value={name}
+            onChangeText={setName}
             onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
@@ -41,6 +52,8 @@ function SignUp({ navigation }) {
             placeholder='Digite seu email'
             ref={emailRef}
             returnKeyType='next'
+            value={email}
+            onChangeText={setEmail}
             onSubmitEditing={() => passRef.current.focus()}
           />
           <FormInput
@@ -49,6 +62,8 @@ function SignUp({ navigation }) {
             placeholder='Digite sua senha secreta'
             ref={passRef}
             returnKeyType='send'
+            value={password}
+            onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
           />
           <SubmitButton onPress={handleSubmit}>Criar</SubmitButton>

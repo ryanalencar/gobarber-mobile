@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Image } from 'react-native'
 import PropTypes from 'prop-types'
 
 import Background from '../../components/Background'
-
 import {
   Container,
   FormInput,
@@ -13,11 +12,17 @@ import {
   SignLinkText,
 } from './styles'
 import logo from '../../assets/logo.png'
+import { useReducerAuth } from '../../store/hooks/auth'
 
 function SignIn({ navigation }) {
+  const [, { dispatchSignUp }] = useReducerAuth()
   const passwordRef = useRef()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    dispatchSignUp({ email, password })
+  }
 
   return (
     <Background>
@@ -31,6 +36,8 @@ function SignIn({ navigation }) {
             autoCapitalize='none'
             placeholder='Digite seu email'
             returnKeyType='next'
+            value={email}
+            onChangeText={setEmail}
             onSubmitEditing={() => passwordRef.current.focus()}
           />
           <FormInput
@@ -39,6 +46,8 @@ function SignIn({ navigation }) {
             placeholder='Digite sua senha secreta'
             ref={passwordRef}
             returnKeyType='send'
+            value={password}
+            onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
           />
           <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
