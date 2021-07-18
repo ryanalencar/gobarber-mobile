@@ -1,7 +1,7 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects'
-import { toast } from 'react-toastify'
+import { Alert } from 'react-native'
 import { authActions, successLogin, failureSign } from '../actions/auth'
-import api from '~/services/api'
+import api from '../../services/api'
 
 export function* signIn({ payload }) {
   try {
@@ -10,8 +10,11 @@ export function* signIn({ payload }) {
 
     const { token, user } = newAuth.data || {}
 
-    if (!user.provider) {
-      toast.error('Usuário não é prestador')
+    if (user.provider) {
+      Alert.alert(
+        'Erro no login',
+        'O usuário não pode ser prestador de serviços'
+      )
       return yield put(failureSign())
     }
 
@@ -25,7 +28,10 @@ export function* signIn({ payload }) {
 
     return true
   } catch (error) {
-    toast.error('Falha na autenticação, verifique seus dados')
+    Alert.alert(
+      'Falha na autenticação',
+      'Houve um erro no login. Verifique seus dados'
+    )
     return yield put(failureSign())
   }
 }
@@ -40,10 +46,11 @@ export function* signUp({ payload }) {
       password,
       provider: true,
     })
-
-    toast.success('Usuário cadastrado com sucesso. Faça o login.')
   } catch (error) {
-    toast.error('Falha no cadastro, verifique seus dados!')
+    Alert.alert(
+      'Falha no cadastro',
+      'Houve um erro no cadastro. Verifique seus dados'
+    )
     yield put(failureSign())
   }
 }
@@ -55,7 +62,7 @@ export function setToken({ payload }) {
 }
 
 export function signOut() {
-  toast.info('Usuário deslogado')
+  Alert.alert('Usuário deslogado', 'Usuário deslogado com sucesso')
 }
 
 export default all([
