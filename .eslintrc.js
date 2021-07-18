@@ -31,5 +31,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'react/forbid-prop-types': 'off',
     'no-undef': 'off',
+    'no-param-reassign': 'off',
+    'consistent-return': 'off',
   },
 }
