@@ -8,8 +8,6 @@ export function* signIn({ payload }) {
     const { email, password } = payload
     const newAuth = yield call(api.post, 'sessions', { email, password })
 
-    // console.log('newAuth',newAuth.data)
-
     const { token, user } = newAuth.data || {}
 
     if (!user.provider) {
@@ -40,12 +38,11 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
-      provider: true
+      provider: true,
     })
 
     toast.success('Usuário cadastrado com sucesso. Faça o login.')
   } catch (error) {
-    // console.log('error',error)
     toast.error('Falha no cadastro, verifique seus dados!')
     yield put(failureSign())
   }
@@ -58,12 +55,12 @@ export function setToken({ payload }) {
 }
 
 export function signOut() {
-  toast.info("Usuário deslogado")
+  toast.info('Usuário deslogado')
 }
 
 export default all([
   takeLatest(authActions.signOut, signOut),
   takeLatest(authActions.rehydrate, setToken),
   takeLatest(authActions.requestLogin, signIn),
-  takeLatest(authActions.requestSignUp, signUp)
+  takeLatest(authActions.requestSignUp, signUp),
 ])

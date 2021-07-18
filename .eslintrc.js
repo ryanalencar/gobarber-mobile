@@ -33,5 +33,6 @@ module.exports = {
     'no-undef': 'off',
     'no-param-reassign': 'off',
     'consistent-return': 'off',
+    camelcase: 'off',
   },
 }

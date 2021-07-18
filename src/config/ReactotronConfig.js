@@ -4,8 +4,8 @@ import { reactotronRedux } from 'reactotron-redux'
 import reactotronSaga from 'reactotron-redux-saga'
 
 if (__DEV__) {
-  const tron = Reactotron.asyncStorageHandler(AsyncStorage)
-    .configure()
+  const tron = Reactotron.configure()
+    .setAsyncStorageHandler(AsyncStorage)
     .useReactNative()
     .use(reactotronRedux())
     .use(reactotronSaga())
