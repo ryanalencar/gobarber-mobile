@@ -15,10 +15,13 @@ import logo from '../../assets/logo.png'
 import { useReducerAuth } from '../../store/hooks/auth'
 
 function SignIn({ navigation }) {
-  const [, { dispatchSignUp }] = useReducerAuth()
+  const [stateAuth, { dispatchSignUp }] = useReducerAuth()
+
   const passwordRef = useRef()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { loading } = stateAuth
 
   const handleSubmit = () => {
     dispatchSignUp({ email, password })
@@ -50,7 +53,9 @@ function SignIn({ navigation }) {
             onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Acessar
+          </SubmitButton>
         </Form>
 
         <SignLink>
