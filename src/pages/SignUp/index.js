@@ -16,7 +16,7 @@ import logo from '../../assets/logo.png'
 import { useReducerAuth } from '../../store/hooks/auth'
 
 function SignUp({ navigation }) {
-  const [stateAuth, { dispatchSignUp }] = useReducerAuth()
+  const [{ loading }, { dispatchSignUp }] = useReducerAuth()
 
   const emailRef = useRef()
   const passRef = useRef()
@@ -24,10 +24,8 @@ function SignUp({ navigation }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { loading } = stateAuth
 
   const handleSubmit = () => {
-    console.log('teste')
     dispatchSignUp({ name, email, password })
   }
 

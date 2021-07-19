@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Image, Button } from 'react-native'
+import { Image } from 'react-native'
 import PropTypes from 'prop-types'
 
 import Background from '../../components/Background'
@@ -24,7 +24,6 @@ function SignIn({ navigation }) {
 
   function handleSubmit() {
     dispatchLogin({ email, password })
-    // dispatchSignIn({ email, password })
   }
 
   return (
@@ -52,12 +51,6 @@ function SignIn({ navigation }) {
             value={password}
             onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
-          />
-          <Button
-            onPress={handleSubmit}
-            title='Learn More'
-            color='#841584'
-            accessibilityLabel='Learn more about this purple button'
           />
           <SubmitButton loading={loading} onPress={handleSubmit}>
             Acessar
