@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Image } from 'react-native'
+import { Image, Button } from 'react-native'
 import PropTypes from 'prop-types'
 
 import Background from '../../components/Background'
@@ -15,16 +15,16 @@ import logo from '../../assets/logo.png'
 import { useReducerAuth } from '../../store/hooks/auth'
 
 function SignIn({ navigation }) {
-  const [stateAuth, { dispatchSignUp }] = useReducerAuth()
+  const [{ loading }, { dispatchLogin }] = useReducerAuth()
 
   const passwordRef = useRef()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { loading } = stateAuth
 
-  const handleSubmit = () => {
-    dispatchSignUp({ email, password })
+  function handleSubmit() {
+    dispatchLogin({ email, password })
+    // dispatchSignIn({ email, password })
   }
 
   return (
@@ -52,6 +52,12 @@ function SignIn({ navigation }) {
             value={password}
             onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
+          />
+          <Button
+            onPress={handleSubmit}
+            title='Learn More'
+            color='#841584'
+            accessibilityLabel='Learn more about this purple button'
           />
           <SubmitButton loading={loading} onPress={handleSubmit}>
             Acessar
