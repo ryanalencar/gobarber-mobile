@@ -34,5 +34,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'consistent-return': 'off',
     camelcase: 'off',
+    'react/prop-types': 'warn',
   },
 }
