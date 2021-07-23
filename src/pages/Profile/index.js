@@ -8,12 +8,15 @@ import {
   FormInput,
   SubmitButton,
   Separator,
+  LogoutButton,
 } from './styles'
 import Background from '../../components/Background'
 import { useReducerUser } from '../../store/hooks/user'
+import { useReducerAuth } from '../../store/hooks/auth'
 
 function Profile() {
   const [{ profile }, { dispatchUpdateProfile }] = useReducerUser()
+  const [, { dispatchSignOut }] = useReducerAuth()
   const { name: profileName, email: profileEmail } = profile
 
   const [name, setName] = useState(profileName)
@@ -35,6 +38,10 @@ function Profile() {
       password,
       confirmPassword,
     })
+  }
+
+  function handleLogout() {
+    dispatchSignOut()
   }
 
   useEffect(() => {
@@ -103,7 +110,8 @@ function Profile() {
             onChangeText={setConfirmPassword}
             onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onPress={handleSubmit}>Criar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Atualizar Perfil</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background>
