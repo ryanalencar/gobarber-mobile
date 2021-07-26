@@ -1,12 +1,24 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+
+import Background from '../../../components/Background'
 
 // import { Container } from './styles';
 
 export default function SelectProvider() {
-  return <Text>SelectProvider</Text>
+  return <Background />
 }
 
-SelectProvider.navigationOptions = {
+SelectProvider.navigationOptions = ({ navigation }) => ({
   title: 'Selecione o prestador',
-}
+  headerLeft: () => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Dashboard')
+      }}
+    >
+      <Icon name='chevron-left' size={20} color='#fff' />
+    </TouchableOpacity>
+  ),
+})
