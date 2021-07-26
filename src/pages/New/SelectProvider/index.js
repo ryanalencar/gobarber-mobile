@@ -3,8 +3,10 @@ import { Text } from 'react-native'
 
 // import { Container } from './styles';
 
-function SelectProvider() {
+export default function SelectProvider() {
   return <Text>SelectProvider</Text>
 }
 
-export default SelectProvider
+SelectProvider.navigationOptions = {
+  title: 'Selecione o prestador',
+}

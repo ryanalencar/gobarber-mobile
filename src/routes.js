@@ -24,11 +24,22 @@ export default function createRouter(signedIn) {
           {
             Dashboard,
             New: {
-              screen: createStackNavigator({
-                SelectProvider,
-                SelectDateTime,
-                ConfirmAppointment,
-              }),
+              screen: createStackNavigator(
+                {
+                  SelectProvider,
+                  SelectDateTime,
+                  ConfirmAppointment,
+                },
+                {
+                  defaultNavigationOptions: {
+                    headerTransparent: true,
+                    headerTintColor: '#fff',
+                    headerLeftContainerStyle: {
+                      marginLeft: 20,
+                    },
+                  },
+                }
+              ),
               navigationOptions: {
                 tabBarVisible: false,
                 tabBarLabel: 'Agendar',
