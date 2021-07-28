@@ -28,6 +28,7 @@ export function* signIn({ payload }) {
 
     return true
   } catch (error) {
+    console.log(error)
     Alert.alert(
       'Falha na autenticação',
       'Houve um erro no login. Verifique seus dados'

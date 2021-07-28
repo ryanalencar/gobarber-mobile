@@ -17,6 +17,7 @@ function Dashboard() {
     }
     loadAppointments()
   }, [])
+  console.log(appointments)
 
   async function handleCancel(id) {
     const response = await api.delete(`appointments/${id}`)
