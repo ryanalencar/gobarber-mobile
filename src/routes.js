@@ -55,6 +55,7 @@ export default function createRouter(signedIn) {
             Profile,
           },
           {
+            resetOnBlur: true,
             tabBarOptions: {
               keyboardHidesTabBar: true,
               activeTintColor: '#FFF',
